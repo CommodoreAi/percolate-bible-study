@@ -152,11 +152,26 @@
 
   function updateResult() {
     var result = chooseRecommendation();
-    weekEl.textContent = result.week;
-    titleEl.textContent = result.title;
-    bodyEl.textContent = result.body;
-    linkEl.setAttribute('href', result.href);
-    inviteEl.textContent = inviteText(result);
+    var resultEl = document.getElementById('checkin-result');
+    if (resultEl) {
+      resultEl.style.opacity = '0.4';
+      resultEl.style.transform = 'translateY(4px)';
+      setTimeout(function () {
+        weekEl.textContent = result.week;
+        titleEl.textContent = result.title;
+        bodyEl.textContent = result.body;
+        linkEl.setAttribute('href', result.href);
+        inviteEl.textContent = inviteText(result);
+        resultEl.style.opacity = '1';
+        resultEl.style.transform = 'translateY(0)';
+      }, 180);
+    } else {
+      weekEl.textContent = result.week;
+      titleEl.textContent = result.title;
+      bodyEl.textContent = result.body;
+      linkEl.setAttribute('href', result.href);
+      inviteEl.textContent = inviteText(result);
+    }
   }
 
   panel.addEventListener('click', function (event) {
@@ -563,6 +578,42 @@
         indexSection.insertBefore(bar, indexList);
       }
     }
+  }
+})();
+
+/* ============================================
+   PERCOLATE BIBLE STUDY — Home Page Scroll Reveal
+   ============================================ */
+
+(function () {
+  'use strict';
+
+  if (!document.body.classList.contains('home-page')) return;
+  if (!('IntersectionObserver' in window)) return;
+
+  var targets = document.querySelectorAll(
+    '.notebook-index, .home-board, .table-checkin, .thesis-foundation, ' +
+    '.foundation-card, .rhythm-card, .back-cover'
+  );
+
+  for (var i = 0; i < targets.length; i++) {
+    targets[i].style.opacity = '0';
+    targets[i].style.transform = 'translateY(24px)';
+    targets[i].style.transition = 'opacity 0.55s ease ' + (i % 3) * 0.1 + 's, transform 0.55s ease ' + (i % 3) * 0.1 + 's';
+  }
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+  for (var j = 0; j < targets.length; j++) {
+    observer.observe(targets[j]);
   }
 })();
 
