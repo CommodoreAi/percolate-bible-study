@@ -490,3 +490,78 @@
     }
   });
 })();
+
+/* ============================================
+   PERCOLATE BIBLE STUDY — Visited Weeks Tracker
+   ============================================ */
+
+(function () {
+  'use strict';
+
+  var STORAGE_KEY = 'percolate-visited';
+
+  function getVisited() {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function markVisited(weekNum) {
+    var visited = getVisited();
+    if (!visited[weekNum]) {
+      visited[weekNum] = Date.now();
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(visited)); } catch (e) {}
+    }
+  }
+
+  // On a week page, mark it as visited
+  var weekMatch = window.location.pathname.match(/week(\d+)\.html/i);
+  if (weekMatch) {
+    markVisited(Number(weekMatch[1]));
+  }
+
+  // On the home page, show visited state
+  if (!document.body.classList.contains('home-page')) return;
+
+  var visited = getVisited();
+  var visitedCount = Object.keys(visited).length;
+
+  // Mark index items
+  var indexItems = document.querySelectorAll('.index-item');
+  for (var i = 0; i < indexItems.length; i++) {
+    var href = indexItems[i].getAttribute('href') || '';
+    var m = href.match(/week(\d+)\.html/i);
+    if (m && visited[Number(m[1])]) {
+      indexItems[i].classList.add('is-visited');
+    }
+  }
+
+  // Mark session cards
+  var sessionCards = document.querySelectorAll('.session-card');
+  for (var j = 0; j < sessionCards.length; j++) {
+    var cardHref = sessionCards[j].getAttribute('href') || '';
+    var cm = cardHref.match(/week(\d+)\.html/i);
+    if (cm && visited[Number(cm[1])]) {
+      sessionCards[j].classList.add('is-visited');
+    }
+  }
+
+  // Add progress bar above journal index if any weeks visited
+  if (visitedCount > 0) {
+    var indexSection = document.getElementById('journal-index');
+    if (indexSection) {
+      var bar = document.createElement('div');
+      bar.className = 'study-progress-bar';
+      var pct = Math.round((visitedCount / 12) * 100);
+      bar.innerHTML =
+        '<span>' + visitedCount + ' of 12 brewed</span>' +
+        '<span class="progress-track"><span class="progress-fill" style="width:' + pct + '%"></span></span>';
+      var indexList = indexSection.querySelector('.index-list');
+      if (indexList) {
+        indexSection.insertBefore(bar, indexList);
+      }
+    }
+  }
+})();

@@ -3077,3 +3077,69 @@ body.study-card-zoom-open {
     repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(255,255,255,1) 10px, rgba(255,255,255,1) 11px);
   opacity: 0.04;
 }
+
+/* ============================================
+   VISITED-WEEKS PROGRESS TRACKER
+   ============================================ */
+
+/* Journal index — visited indicator */
+.index-item.is-visited .log-no::after {
+  content: '\2713';
+  display: inline-block;
+  margin-left: 0.45em;
+  font-size: 0.72em;
+  color: #4dc0ab;
+  font-weight: 700;
+  opacity: 0.85;
+}
+
+.index-item.is-visited .log-note {
+  color: rgba(77, 192, 171, 0.7);
+  font-style: normal;
+}
+
+/* Session grid card — visited ring */
+.session-card.is-visited .card-inner::after {
+  content: '';
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.6);
+  background: transparent;
+  pointer-events: none;
+}
+
+.session-card .card-inner {
+  position: relative;
+}
+
+/* Home progress bar */
+.study-progress-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0 1rem;
+  font-size: 0.78rem;
+  color: rgba(36, 24, 13, 0.55);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.study-progress-bar .progress-track {
+  flex: 1;
+  height: 4px;
+  background: rgba(36, 24, 13, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.study-progress-bar .progress-fill {
+  height: 100%;
+  background: #4dc0ab;
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
