@@ -287,7 +287,7 @@
   if (!document.body.classList.contains('session-page')) return;
   if (!('IntersectionObserver' in window)) {
     // Fallback: show everything immediately
-    var all = document.querySelectorAll('.section-card, .key-verse-wrap, .dual-section, .next-week-cta, .esv-copyright');
+    var all = document.querySelectorAll('.section-card, .key-verse-wrap, .dual-section, .next-week-cta, .esv-copyright, .completion-card');
     for (var i = 0; i < all.length; i++) all[i].classList.add('is-visible');
     return;
   }
@@ -306,7 +306,7 @@
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-  var targets = document.querySelectorAll('.section-card, .key-verse-wrap, .dual-section, .next-week-cta, .esv-copyright');
+  var targets = document.querySelectorAll('.section-card, .key-verse-wrap, .dual-section, .next-week-cta, .esv-copyright, .completion-card');
   for (var i = 0; i < targets.length; i++) {
     targets[i].setAttribute('data-reveal-delay', i * 60);
     observer.observe(targets[i]);
