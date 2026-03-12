@@ -1382,13 +1382,15 @@ ul {
   margin: 1rem auto 2.5rem;
   padding: 0 0 2rem;
   background:
-    linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.08) 3%, transparent 3.5%),
-    linear-gradient(180deg, var(--paper-bright) 0%, var(--paper) 100%);
+    linear-gradient(180deg, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0.08) 3%, transparent 3.5%),
+    linear-gradient(180deg, rgba(255, 249, 239, 0.58) 0%, rgba(246, 236, 212, 0.5) 100%);
   border: 2px solid rgba(67, 46, 21, 0.2);
   border-radius: 34px;
   box-shadow:
     0 28px 90px rgba(0,0,0,0.3),
     inset 0 1px 0 rgba(255,255,255,0.6);
+  backdrop-filter: blur(10px) saturate(1.04);
+  -webkit-backdrop-filter: blur(10px) saturate(1.04);
   overflow: hidden;
 }
 
@@ -1896,7 +1898,11 @@ ul {
    ============================================ */
 
 .session-page.has-study-card .content-wrap {
-  background: #f3f0ec;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.06) 3%, transparent 3.5%),
+    linear-gradient(180deg, rgba(243, 240, 236, 0.58) 0%, rgba(243, 240, 236, 0.5) 100%);
+  backdrop-filter: blur(12px) saturate(1.06);
+  -webkit-backdrop-filter: blur(12px) saturate(1.06);
 }
 
 .session-page.has-study-card .content-wrap::before,
