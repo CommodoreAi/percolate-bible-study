@@ -2283,6 +2283,7 @@ body.study-card-zoom-open {
   --hub-paper: #f6ecd4;
   --hub-paper-bright: #fff9ef;
   --hub-ink: #24180d;
+  background-color: var(--hub-paper);
 }
 
 .home-page .page-bg {
@@ -2296,6 +2297,7 @@ body.study-card-zoom-open {
   position: relative;
   max-width: 1240px;
   margin: 1rem auto 2rem;
+  min-height: calc(100dvh - 1rem);
   padding-bottom: 2.5rem;
   background:
     linear-gradient(180deg, rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.08) 3%, transparent 3.5%),
@@ -2576,8 +2578,14 @@ body.study-card-zoom-open {
 }
 
 @media (max-width: 720px) {
+  .home-page {
+    background-color: var(--hub-paper);
+  }
+
   .home-page .content-wrap {
     margin: 0;
+    min-height: 100dvh;
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
     border-radius: 0;
     border-left: 0;
     border-right: 0;
@@ -2595,6 +2603,10 @@ body.study-card-zoom-open {
   .home-page .home-rhythm,
   .home-page .site-footer {
     padding-left: 3rem;
+  }
+
+  .home-page .site-footer {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
   }
 
   .back-cover {
