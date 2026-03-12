@@ -1650,16 +1650,50 @@ ul {
   background-size: 256px 256px;
 }
 
-/* Polka dot pattern overlay for Week 3 */
-.bg-polka::before {
+/* Pattern overlays — matching Angela's PDF card patterns */
+.bg-polka::after,
+.bg-swirl::after,
+.bg-stripes::after,
+.bg-waves::after {
   content: '';
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.08) 8px, transparent 8px);
-  background-size: 40px 40px;
+  z-index: 0;
   pointer-events: none;
+  opacity: 0.06;
+}
+
+/* Polka dots — Weeks 3, 11 (orange) */
+.bg-polka::after {
+  background-image: radial-gradient(circle, rgba(255,255,255,1) 6px, transparent 6px);
+  background-size: 36px 36px;
+}
+
+/* Swirl/circles — Weeks 1, 9 (teal), 7 (purple) */
+.bg-swirl::after {
+  background-image:
+    radial-gradient(circle at 50% 50%, transparent 12px, rgba(255,255,255,1) 12px, rgba(255,255,255,1) 14px, transparent 14px);
+  background-size: 44px 44px;
+}
+
+/* Diagonal stripes — Weeks 2, 10 (lime), 6 (pink) */
+.bg-stripes::after {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 8px,
+    rgba(255,255,255,1) 8px,
+    rgba(255,255,255,1) 10px
+  );
+}
+
+/* Wavy crosshatch — Weeks 4, 12 (crimson), 5 (blue), 8 (deep purple) */
+.bg-waves::after {
+  background-image:
+    repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,1) 10px, rgba(255,255,255,1) 11px),
+    repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(255,255,255,1) 10px, rgba(255,255,255,1) 11px);
+  opacity: 0.04;
 }
