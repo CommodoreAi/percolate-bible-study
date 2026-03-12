@@ -1910,6 +1910,21 @@ ul {
   transform: rotate(7deg);
 }
 
+.margin-note {
+  position: absolute;
+  right: 1rem;
+  top: 18rem;
+  z-index: 2;
+  width: 8rem;
+  padding-left: 0.45rem;
+  border-left: 1px solid rgba(210, 105, 30, 0.8);
+  color: rgba(210, 105, 30, 0.92);
+  font-size: 0.75rem;
+  font-style: italic;
+  line-height: 1.45;
+  transform: rotate(5deg);
+}
+
 @keyframes posterFloat {
   0%, 100% {
     transform: scale(1.18) translateY(0) rotate(-0.35deg);
@@ -1934,6 +1949,10 @@ ul {
 .session-page.has-study-card .session-tag {
   margin-left: 5.2rem;
   margin-bottom: 0.9rem;
+}
+
+.session-page.has-study-card .margin-note {
+  top: 20rem;
 }
 
 .session-page.has-study-card .section-card::before,
@@ -2005,6 +2024,15 @@ ul {
   .session-tag,
   .session-page.has-study-card .session-tag {
     margin-left: 1rem;
+  }
+
+  .margin-note,
+  .session-page.has-study-card .margin-note {
+    position: static;
+    width: auto;
+    margin: 0 1rem 0.9rem;
+    padding-left: 0.65rem;
+    transform: none;
   }
 
   .study-card-shell {
