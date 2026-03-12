@@ -358,3 +358,38 @@
   updateNotebookMotion();
   window.addEventListener('scroll', onScroll, { passive: true });
 })();
+
+/* ============================================
+   PERCOLATE BIBLE STUDY — Study Card Stage
+   ============================================ */
+
+(function () {
+  'use strict';
+
+  if (!document.body.classList.contains('session-page')) return;
+
+  var match = window.location.pathname.match(/week(\d+)\.html/i);
+  if (!match) return;
+
+  var weekNumber = Number(match[1]);
+  if (!weekNumber || weekNumber < 1 || weekNumber > 12) return;
+
+  var weekPadded = String(weekNumber).padStart(2, '0');
+  var progress = document.querySelector('.session-progress');
+  if (!progress) return;
+
+  document.body.classList.add('has-study-card');
+  document.body.style.setProperty('--study-card-image', 'url("cards/week-' + weekPadded + '.png")');
+
+  if (!document.querySelector('.study-card-stage')) {
+    var stage = document.createElement('section');
+    stage.className = 'study-card-stage';
+    stage.setAttribute('aria-label', 'Percolate study card artwork');
+    stage.innerHTML =
+      '<div class="study-card-shell">' +
+        '<img class="study-card-image" src="cards/week-' + weekPadded + '.png" alt="Percolate Week ' + weekNumber + ' study card">' +
+      '</div>' +
+      '<p class="study-card-caption">Original Percolate card layout with companion notes below.</p>';
+    progress.insertAdjacentElement('afterend', stage);
+  }
+})();

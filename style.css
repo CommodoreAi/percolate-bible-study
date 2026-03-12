@@ -1804,6 +1804,184 @@ ul {
 }
 
 /* ============================================
+   SESSION PAGES — REAL CARD STAGE OVERRIDE
+   ============================================ */
+
+.session-page.has-study-card .content-wrap {
+  background: #f3f0ec;
+}
+
+.session-page.has-study-card .content-wrap::before,
+.session-page.has-study-card .content-wrap::after {
+  display: none;
+}
+
+.session-page.has-study-card .session-hero {
+  display: none;
+}
+
+.study-card-stage {
+  position: relative;
+  z-index: 1;
+  max-width: 1080px;
+  margin: 1.25rem auto 1.75rem;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.study-card-shell {
+  position: relative;
+  display: inline-block;
+  width: min(100%, 940px);
+  padding: 1.1rem;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow:
+    0 18px 60px rgba(0,0,0,0.18),
+    0 0 0 1px rgba(0,0,0,0.06);
+}
+
+.study-card-shell::after {
+  content: "";
+  position: absolute;
+  right: -1.4rem;
+  bottom: -1.4rem;
+  width: 8.5rem;
+  height: 8.5rem;
+  background: url('coffee-stain.svg') no-repeat center / contain;
+  opacity: 0.38;
+  pointer-events: none;
+}
+
+.study-card-image {
+  width: 100%;
+  height: auto;
+  border-radius: 2px;
+  transform-origin: center;
+  clip-path: inset(10% 8% 11% 8%);
+  animation: posterFloat 7s ease-in-out infinite;
+}
+
+.study-card-caption {
+  margin-top: 0.8rem;
+  color: rgba(35, 23, 12, 0.56);
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@keyframes posterFloat {
+  0%, 100% {
+    transform: scale(1.18) translateY(0) rotate(-0.35deg);
+  }
+  50% {
+    transform: scale(1.18) translateY(-6px) rotate(0.35deg);
+  }
+}
+
+.session-page.has-study-card .section-card,
+.session-page.has-study-card .dual-card,
+.session-page.has-study-card .key-verse {
+  transform: none;
+  border-width: 1px;
+  border-color: rgba(73, 50, 24, 0.16);
+  border-radius: 18px;
+  box-shadow:
+    0 8px 24px rgba(0,0,0,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.38);
+}
+
+.session-page.has-study-card .section-card::before,
+.session-page.has-study-card .section-card[aria-label="Discussion Questions"]::after,
+.session-page.has-study-card .key-verse::after {
+  display: none;
+}
+
+.session-page.has-study-card .section-card,
+.session-page.has-study-card .key-verse-wrap,
+.session-page.has-study-card .dual-section,
+.session-page.has-study-card .next-week-cta,
+.session-page.has-study-card .esv-copyright {
+  max-width: 920px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.session-page.has-study-card .section-card,
+.session-page.has-study-card .dual-section {
+  margin-bottom: 1rem;
+}
+
+.session-page.has-study-card .section-card h2,
+.session-page.has-study-card .section-card p,
+.session-page.has-study-card .section-card ul,
+.session-page.has-study-card .reading-links,
+.session-page.has-study-card .dual-card h2,
+.session-page.has-study-card .dual-card p {
+  margin-left: 0;
+}
+
+.session-page.has-study-card .section-card[aria-label="Coffee Moment"],
+.session-page.has-study-card .section-card[aria-label="Reflection"],
+.session-page.has-study-card .section-card[aria-label="Discussion Questions"],
+.session-page.has-study-card .section-card[aria-label="Additional Reading"] {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.session-page.has-study-card .key-verse-wrap {
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.session-page.has-study-card .key-verse {
+  max-width: 920px;
+  width: 100%;
+  padding: 1.25rem 1.4rem;
+  border-left: 6px solid var(--week-accent);
+  background: rgba(255, 250, 241, 0.97);
+}
+
+.session-page.has-study-card .key-verse blockquote {
+  font-size: 1.15rem;
+  line-height: 1.3;
+}
+
+.session-page.has-study-card .reading-links {
+  gap: 0.65rem;
+}
+
+.session-page.has-study-card .bookmark-fab {
+  right: 1.2rem;
+  bottom: 1.2rem;
+}
+
+@media (max-width: 720px) {
+  .study-card-shell {
+    padding: 0.7rem;
+  }
+
+  .study-card-caption {
+    padding: 0 1rem;
+  }
+
+  .session-page.has-study-card .section-card,
+  .session-page.has-study-card .key-verse-wrap,
+  .session-page.has-study-card .dual-section,
+  .session-page.has-study-card .next-week-cta {
+    margin-left: 0.8rem;
+    margin-right: 0.8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .study-card-image {
+    animation: none;
+    transform: none;
+  }
+}
+
+/* ============================================
    HOME PAGE — NOTEBOOK HUB OVERRIDE
    ============================================ */
 
@@ -1865,6 +2043,7 @@ ul {
 }
 
 .home-page .home-hero,
+.home-page .notebook-index,
 .home-page .home-board,
 .home-page .table-checkin,
 .home-page .thesis-foundation,
@@ -1901,7 +2080,7 @@ ul {
 .home-page .foundation-card p:last-child,
 .home-page .rhythm-card p:last-child,
 .home-page .sidekick-copy {
-  color: rgba(36, 24, 13, 0.82);
+  color: rgba(36, 24, 13, 0.9);
 }
 
 .home-page .hero-badge,
@@ -1931,7 +2110,23 @@ ul {
 .home-page .preview-label,
 .home-page .preview-week,
 .home-page .sidekick-label {
-  color: rgba(36, 24, 13, 0.66);
+  color: rgba(36, 24, 13, 0.76);
+}
+
+.home-page .logo-title {
+  color: #4a378f;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 0.88;
+}
+
+.home-page .subtitle,
+.home-page .card-meta,
+.home-page .stat-value,
+.home-page .stat-label {
+  color: rgba(36, 24, 13, 0.9);
 }
 
 .home-page .board-heading h2,
@@ -1949,6 +2144,106 @@ ul {
     0 18px 36px rgba(0,0,0,0.16);
 }
 
+.notebook-index {
+  position: relative;
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 0;
+}
+
+.index-list {
+  position: relative;
+  margin-top: 1.25rem;
+  padding: 1.4rem 1.35rem 1rem;
+  border: 1px solid rgba(67, 46, 21, 0.14);
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.34), rgba(255,255,255,0.08)),
+    rgba(255, 251, 243, 0.94);
+  box-shadow:
+    0 10px 0 rgba(90, 66, 36, 0.08),
+    0 18px 38px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.index-list::before {
+  content: "";
+  position: absolute;
+  top: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  width: 0.45rem;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, rgba(65, 44, 20, 0.22) 0 2px, transparent 2.4px) center top / 8px 18px repeat-y;
+  opacity: 0.72;
+}
+
+.index-list::after {
+  content: "";
+  position: absolute;
+  right: -1.6rem;
+  bottom: -1.6rem;
+  width: 9rem;
+  height: 9rem;
+  background: url('coffee-stain.svg') no-repeat center / contain;
+  opacity: 0.26;
+  pointer-events: none;
+}
+
+.index-item {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.95rem 0.8rem 0.95rem 1.7rem;
+  border-bottom: 1px dotted rgba(67, 46, 21, 0.2);
+  color: #24180d;
+  transition: transform 0.22s ease, background-color 0.22s ease, padding-left 0.22s ease;
+}
+
+.index-item:last-child {
+  border-bottom: 0;
+}
+
+.index-item:hover,
+.index-item:focus-visible,
+.index-item--active {
+  background: rgba(210, 105, 30, 0.08);
+  padding-left: 2.15rem;
+  transform: translateX(4px);
+}
+
+.log-no,
+.log-title,
+.log-note {
+  display: block;
+}
+
+.log-no {
+  color: #c8651d;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.log-title {
+  font-size: 1.08rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.log-note {
+  color: rgba(36, 24, 13, 0.58);
+  font-size: 0.82rem;
+  font-style: italic;
+  text-align: right;
+}
+
 @media (max-width: 720px) {
   .home-page .content-wrap {
     margin: 0;
@@ -1962,12 +2257,29 @@ ul {
   }
 
   .home-page .home-hero,
+  .home-page .notebook-index,
   .home-page .home-board,
   .home-page .table-checkin,
   .home-page .thesis-foundation,
   .home-page .home-rhythm,
   .home-page .site-footer {
     padding-left: 3rem;
+  }
+
+  .index-item {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+    padding-left: 1.6rem;
+  }
+
+  .index-item:hover,
+  .index-item:focus-visible,
+  .index-item--active {
+    padding-left: 1.9rem;
+  }
+
+  .log-note {
+    text-align: left;
   }
 }
 
