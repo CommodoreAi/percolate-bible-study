@@ -1329,7 +1329,21 @@ ul {
     linear-gradient(180deg, color-mix(in srgb, var(--week-bg) 92%, #ffffff 4%) 0%, color-mix(in srgb, var(--week-bg) 88%, #130d12 12%) 100%);
 }
 
+.session-page.pattern-dots {
+  background:
+    radial-gradient(circle, color-mix(in srgb, var(--week-accent) 34%, #ffffff 8%) 0 18%, transparent 19%) 0 0 / 34px 34px,
+    radial-gradient(circle, rgba(0,0,0,0.16) 0 12%, transparent 13%) 17px 17px / 34px 34px,
+    linear-gradient(180deg, color-mix(in srgb, var(--week-bg) 92%, #ffffff 4%) 0%, color-mix(in srgb, var(--week-bg) 88%, #130d12 12%) 100%);
+}
+
 .session-page.pattern-grid .page-bg {
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.14) 0 7px, transparent 7px 100%) 0 0 / 30px 30px,
+    linear-gradient(rgba(0,0,0,0.16) 0 7px, transparent 7px 100%) 0 0 / 30px 30px,
+    linear-gradient(180deg, color-mix(in srgb, var(--week-bg) 90%, #ffffff 5%) 0%, color-mix(in srgb, var(--week-bg) 86%, #130d12 14%) 100%);
+}
+
+.session-page.pattern-grid {
   background:
     linear-gradient(90deg, rgba(255,255,255,0.14) 0 7px, transparent 7px 100%) 0 0 / 30px 30px,
     linear-gradient(rgba(0,0,0,0.16) 0 7px, transparent 7px 100%) 0 0 / 30px 30px,
@@ -1343,7 +1357,20 @@ ul {
     linear-gradient(180deg, color-mix(in srgb, var(--week-bg) 92%, #ffffff 3%) 0%, color-mix(in srgb, var(--week-bg) 86%, #140c12 14%) 100%);
 }
 
+.session-page.pattern-waves {
+  background:
+    radial-gradient(circle at 0 100%, transparent 24px, rgba(255,255,255,0.18) 24px 28px, transparent 28px) 0 0 / 54px 28px,
+    radial-gradient(circle at 27px 0, transparent 24px, rgba(0,0,0,0.18) 24px 28px, transparent 28px) 0 14px / 54px 28px,
+    linear-gradient(180deg, color-mix(in srgb, var(--week-bg) 92%, #ffffff 3%) 0%, color-mix(in srgb, var(--week-bg) 86%, #140c12 14%) 100%);
+}
+
 .session-page.pattern-burst .page-bg {
+  background:
+    repeating-conic-gradient(from 0deg at 50% 50%, rgba(255,255,255,0.15) 0 14deg, transparent 14deg 28deg),
+    linear-gradient(180deg, color-mix(in srgb, var(--week-bg) 92%, #ffffff 4%) 0%, color-mix(in srgb, var(--week-bg) 86%, #120d12 14%) 100%);
+}
+
+.session-page.pattern-burst {
   background:
     repeating-conic-gradient(from 0deg at 50% 50%, rgba(255,255,255,0.15) 0 14deg, transparent 14deg 28deg),
     linear-gradient(180deg, color-mix(in srgb, var(--week-bg) 92%, #ffffff 4%) 0%, color-mix(in srgb, var(--week-bg) 86%, #120d12 14%) 100%);
