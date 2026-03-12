@@ -1006,15 +1006,56 @@ ul {
 }
 
 .coffee-icon {
+  position: relative;
   font-size: 2rem;
   flex-shrink: 0;
   line-height: 1;
   animation: steamPulse 3s ease-in-out infinite;
 }
 
+.coffee-icon::before,
+.coffee-icon::after {
+  content: '';
+  position: absolute;
+  top: -0.6em;
+  width: 3px;
+  height: 12px;
+  border-radius: 3px;
+  background: rgba(255,255,255,0.35);
+  animation: steamRise 2.4s ease-in-out infinite;
+}
+
+.coffee-icon::before {
+  left: 0.35em;
+  animation-delay: 0s;
+}
+
+.coffee-icon::after {
+  left: 0.7em;
+  animation-delay: 0.8s;
+}
+
 @keyframes steamPulse {
   0%, 100% { opacity: 0.85; transform: translateY(0); }
   50% { opacity: 1; transform: translateY(-2px); }
+}
+
+@keyframes steamRise {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scaleY(0.6);
+  }
+  30% {
+    opacity: 0.5;
+  }
+  70% {
+    opacity: 0.25;
+    transform: translateY(-10px) scaleX(1.4) scaleY(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-18px) scaleX(1.8) scaleY(0.5);
+  }
 }
 
 .coffee-moment p {
