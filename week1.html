@@ -12,9 +12,12 @@
     .page-bg { background: #4dc0ab; }
     .key-verse { border-left: 4px solid #179072; }
     .reading-link:hover { border-color: #179072; }
+    .session-progress { height: 3px; background: rgba(0,0,0,0.2); position: relative; }
+    .progress-bar { height: 100%; border-radius: 0 2px 2px 0; transition: width 0.5s ease; }
+    .week-badge { display: inline-block; padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.75rem; opacity: 0.9; }
   </style>
 </head>
-<body>
+<body class="session-page">
 
 <div class="page-bg" role="presentation"></div>
 
@@ -23,12 +26,19 @@
   <nav class="top-nav" aria-label="Page navigation">
     <a href="index.html" class="nav-brand">Percolate</a>
     <div class="nav-links">
+      
       <a href="index.html">Home</a>
       <a href="week2.html" class="nav-arrow" aria-label="Next week">&rarr;</a>
     </div>
   </nav>
 
+  <!-- Progress -->
+  <div class="session-progress" aria-label="Study progress">
+    <div class="progress-bar" style="width:8%; background:#4dc0ab;"></div>
+  </div>
+
   <header class="session-hero">
+    <div class="week-badge" style="background:#179072;">Week 1 of 12</div>
     <p class="week-label">Week 1</p>
     <h1 class="session-title">Made for<br>Connection</h1>
   </header>
@@ -93,6 +103,14 @@
     <p>Scripture quotations are from the ESV&reg; Bible (The Holy Bible, English Standard Version&reg;), &copy; 2001 by Crossway, a publishing ministry of Good News Publishers. ESV Text Edition: 2025. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. Used by permission. All rights reserved.</p>
   </div>
 
+
+  <!-- Next Week -->
+  <div class="next-week-cta">
+    <a href="week2.html" class="next-week-link" style="border-color:#a7d053;">
+      <span class="next-week-label">Next week</span>
+      <span class="next-week-title">Don't Be Afraid</span>
+    </a>
+  </div>
   <footer class="site-footer">
     &copy; Angela Creason &middot; MFA Thesis Project
   </footer>

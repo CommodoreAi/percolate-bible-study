@@ -600,6 +600,74 @@ ul {
    SESSION PAGES
    ============================================ */
 
+/* Session page entrance animation */
+.session-page .section-card,
+.session-page .key-verse-wrap,
+.session-page .dual-section,
+.session-page .session-hero {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: sectionRise 0.6s ease forwards;
+}
+
+.session-page .session-hero { animation-delay: 0s; }
+.session-page .section-card:nth-of-type(1) { animation-delay: 0.08s; }
+.session-page .key-verse-wrap { animation-delay: 0.12s; }
+.session-page .section-card:nth-of-type(2) { animation-delay: 0.16s; }
+.session-page .section-card:nth-of-type(3) { animation-delay: 0.2s; }
+.session-page .dual-section { animation-delay: 0.24s; }
+.session-page .section-card:nth-of-type(4) { animation-delay: 0.28s; }
+
+@keyframes sectionRise {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Next Week CTA */
+.next-week-cta {
+  max-width: 720px;
+  margin: 1.5rem auto 0;
+  padding: 0 1rem;
+}
+
+.next-week-link {
+  display: block;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 16px;
+  background: rgba(0,0,0,0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  text-align: center;
+  transition: transform 0.2s, background 0.2s, border-color 0.2s;
+}
+
+.next-week-link:hover {
+  transform: translateY(-3px);
+  background: rgba(0,0,0,0.4);
+  border-color: rgba(255,255,255,0.4);
+}
+
+.next-week-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 0.3rem;
+}
+
+.next-week-title {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
 /* Session Hero */
 .session-hero {
   padding: 4rem 1.5rem 2.5rem;

@@ -12,9 +12,12 @@
     .page-bg { background: #b72327; }
     .key-verse { border-left: 4px solid #8d0a0b; }
     .reading-link:hover { border-color: #8d0a0b; }
+    .session-progress { height: 3px; background: rgba(0,0,0,0.2); position: relative; }
+    .progress-bar { height: 100%; border-radius: 0 2px 2px 0; transition: width 0.5s ease; }
+    .week-badge { display: inline-block; padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.75rem; opacity: 0.9; }
   </style>
 </head>
-<body>
+<body class="session-page">
 
 <div class="page-bg" role="presentation"></div>
 
@@ -25,10 +28,17 @@
     <div class="nav-links">
       <a href="week11.html" class="nav-arrow" aria-label="Previous week">&larr;</a>
       <a href="index.html">Home</a>
+      
     </div>
   </nav>
 
+  <!-- Progress -->
+  <div class="session-progress" aria-label="Study progress">
+    <div class="progress-bar" style="width:100%; background:#b72327;"></div>
+  </div>
+
   <header class="session-hero">
+    <div class="week-badge" style="background:#8d0a0b;">Week 12 of 12</div>
     <p class="week-label">Week 12</p>
     <h1 class="session-title">Living Out<br>Love</h1>
   </header>
