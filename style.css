@@ -1152,6 +1152,29 @@ ul {
   border-bottom: 1px solid rgba(255,255,255,0.1);
   padding-left: 1.5rem;
   position: relative;
+  cursor: pointer;
+  transition: background-color 0.25s ease, padding-left 0.25s ease;
+  border-radius: 8px;
+}
+
+.discussion-list li:hover {
+  background: rgba(255,255,255,0.04);
+}
+
+.discussion-list li.is-pondered {
+  background: rgba(255,255,255,0.06);
+  padding-left: 2rem;
+}
+
+.discussion-list li.is-pondered::after {
+  content: '\2713';
+  position: absolute;
+  right: 0.6rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  color: var(--week-accent, rgba(255,255,255,0.5));
+  opacity: 0.7;
 }
 
 .discussion-list li:last-child {
@@ -1899,10 +1922,10 @@ ul {
 
 .session-page.has-study-card .content-wrap {
   background:
-    linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.04) 3%, transparent 3.5%),
-    linear-gradient(180deg, rgba(243, 240, 236, 0.2) 0%, rgba(243, 240, 236, 0.18) 100%);
-  backdrop-filter: blur(10px) saturate(1.03);
-  -webkit-backdrop-filter: blur(10px) saturate(1.03);
+    linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 3%, transparent 3.5%),
+    linear-gradient(180deg, rgba(243, 240, 236, 0.1) 0%, rgba(243, 240, 236, 0.08) 100%);
+  backdrop-filter: blur(8px) saturate(1.02);
+  -webkit-backdrop-filter: blur(8px) saturate(1.02);
 }
 
 .session-page.has-study-card .content-wrap::before,
