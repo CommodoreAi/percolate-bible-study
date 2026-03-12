@@ -858,6 +858,12 @@ ul {
   transition: opacity 0.55s ease, transform 0.55s ease;
 }
 
+/* Key verse slides in from right like a spoken message */
+.session-page .key-verse-wrap {
+  transform: translateX(32px) translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 .session-page .section-card.is-visible,
 .session-page .key-verse-wrap.is-visible,
 .session-page .dual-section.is-visible,
@@ -865,6 +871,10 @@ ul {
 .session-page .esv-copyright.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.session-page .key-verse-wrap.is-visible {
+  transform: translateX(0) translateY(0);
 }
 
 /* Hero still uses initial animation (above fold) */
