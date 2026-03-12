@@ -2164,16 +2164,25 @@ body.study-card-zoom-open {
   }
 
   .study-card-shell {
-    padding: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    padding: 0.55rem;
     width: 100%;
     max-width: none;
   }
 
   .study-card-zoom {
-    right: 0.7rem;
-    top: 0.7rem;
+    position: static;
+    order: 2;
+    align-self: center;
+    margin-top: 0.7rem;
     padding: 0.5rem 0.72rem;
     font-size: 0.68rem;
+  }
+
+  .study-card-image {
+    order: 1;
+    clip-path: none;
   }
 
   .study-card-caption {
