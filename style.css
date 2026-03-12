@@ -2470,6 +2470,7 @@ ul {
   position: relative;
   animation: modalIn 0.25s ease-out;
   box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+  color: #f7f2de;
 }
 
 @keyframes modalIn {
@@ -2506,6 +2507,7 @@ ul {
 }
 
 .modal-reference {
+  color: #f8d98a;
   font-weight: 600;
   font-size: 1.2rem;
   margin-bottom: 1rem;
@@ -2513,27 +2515,40 @@ ul {
 }
 
 .modal-body {
+  color: rgba(247,242,222,0.9);
   font-weight: 300;
   font-size: 0.95rem;
   line-height: 1.7;
-  opacity: 0.8;
   margin-bottom: 1.5rem;
+}
+
+.modal-body p {
+  margin: 0;
 }
 
 .modal-esv-link {
   display: inline-block;
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.25);
-  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(248,217,138,0.18), rgba(255,255,255,0.1));
+  border: 1px solid rgba(248,217,138,0.45);
+  border-radius: 999px;
+  color: #fff4cf;
   padding: 0.6rem 1.2rem;
   font-weight: 500;
   font-size: 0.85rem;
   letter-spacing: 0.05em;
-  transition: background 0.2s;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s, border-color 0.2s;
 }
 
 .modal-esv-link:hover {
-  background: rgba(255,255,255,0.22);
+  background: linear-gradient(135deg, rgba(248,217,138,0.28), rgba(255,255,255,0.16));
+  border-color: rgba(248,217,138,0.75);
+  transform: translateY(-1px);
+}
+
+.modal-esv-link:focus-visible {
+  outline: 2px solid #f8d98a;
+  outline-offset: 3px;
 }
 
 /* ============================================
