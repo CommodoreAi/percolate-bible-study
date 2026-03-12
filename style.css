@@ -1922,10 +1922,10 @@ ul {
 
 .session-page.has-study-card .content-wrap {
   background:
-    linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 3%, transparent 3.5%),
-    linear-gradient(180deg, rgba(243, 240, 236, 0.1) 0%, rgba(243, 240, 236, 0.08) 100%);
-  backdrop-filter: blur(8px) saturate(1.02);
-  -webkit-backdrop-filter: blur(8px) saturate(1.02);
+    linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.015) 3%, transparent 3.5%),
+    linear-gradient(180deg, rgba(243, 240, 236, 0.055) 0%, rgba(243, 240, 236, 0.04) 100%);
+  backdrop-filter: blur(4px) saturate(1.01);
+  -webkit-backdrop-filter: blur(4px) saturate(1.01);
 }
 
 .session-page.has-study-card .content-wrap::before,
