@@ -565,3 +565,22 @@
     }
   }
 })();
+
+/* ============================================
+   PERCOLATE BIBLE STUDY — Discussion Ponder Toggle
+   ============================================ */
+
+(function () {
+  'use strict';
+
+  if (!document.body.classList.contains('session-page')) return;
+
+  var list = document.querySelector('.discussion-list');
+  if (!list) return;
+
+  list.addEventListener('click', function (event) {
+    var li = event.target.closest('li');
+    if (!li || !list.contains(li)) return;
+    li.classList.toggle('is-pondered');
+  });
+})();
