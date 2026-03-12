@@ -1,0 +1,75 @@
+/* ============================================
+   PERCOLATE BIBLE STUDY — Scripture Modal
+   ============================================ */
+
+(function () {
+  'use strict';
+
+  // ESV.org URL builder
+  function esvUrl(reference) {
+    // Convert "Genesis 2:18" -> "Genesis2:18"
+    // Convert "Ecclesiastes 4:9-12" -> "Ecclesiastes4:9-12/"
+    var ref = reference.trim();
+    // Remove leading/trailing spaces, collapse book+chapter
+    ref = ref.replace(/\s+(\d)/, '$1');
+    return 'https://www.esv.org/' + encodeURIComponent(ref) + '/';
+  }
+
+  // Build modal DOM once
+  var overlay = document.createElement('div');
+  overlay.className = 'modal-overlay';
+  overlay.setAttribute('role', 'dialog');
+  overlay.setAttribute('aria-modal', 'true');
+  overlay.setAttribute('aria-label', 'Scripture reference');
+  overlay.innerHTML =
+    '<div class="modal-content">' +
+      '<button class="modal-close" aria-label="Close modal">&times;</button>' +
+      '<div class="modal-reference"></div>' +
+      '<div class="modal-body">' +
+        '<p>Scripture text is available at ESV.org. Click the link below to read the full passage.</p>' +
+      '</div>' +
+      '<a class="modal-esv-link" href="#" target="_blank" rel="noopener noreferrer">' +
+        'Read on ESV.org &rarr;' +
+      '</a>' +
+    '</div>';
+  document.body.appendChild(overlay);
+
+  var refEl = overlay.querySelector('.modal-reference');
+  var linkEl = overlay.querySelector('.modal-esv-link');
+  var closeBtn = overlay.querySelector('.modal-close');
+
+  function openModal(reference) {
+    refEl.textContent = reference;
+    linkEl.href = esvUrl(reference);
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+
+  function closeModal() {
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  closeBtn.addEventListener('click', closeModal);
+
+  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) closeModal();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && overlay.classList.contains('active')) {
+      closeModal();
+    }
+  });
+
+  // Bind all reading links
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('.reading-link');
+    if (link) {
+      e.preventDefault();
+      var ref = link.getAttribute('data-ref') || link.textContent;
+      openModal(ref);
+    }
+  });
+})();
