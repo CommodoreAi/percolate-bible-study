@@ -62,6 +62,146 @@
 })();
 
 /* ============================================
+   PERCOLATE BIBLE STUDY — Table Check-In
+   ============================================ */
+
+(function () {
+  'use strict';
+
+  var panel = document.getElementById('checkin-panel');
+  if (!panel) return;
+
+  var state = {
+    friction: 'disconnection',
+    desire: 'connection',
+    format: 'coffee-catchup'
+  };
+
+  var resultMap = {
+    connection: {
+      week: 'Week 1',
+      title: 'Made for Connection',
+      href: 'week1.html',
+      body: 'Start with connection when the goal is to lower the pressure, rebuild trust, and let the table feel human again.'
+    },
+    fear: {
+      week: 'Week 2',
+      title: "Don't Be Afraid",
+      href: 'week2.html',
+      body: 'Begin with courage when fear is quietly shaping what people are willing to say, ask, or admit.'
+    },
+    isolation: {
+      week: 'Week 3',
+      title: 'The Cost of Isolation',
+      href: 'week3.html',
+      body: 'Start here when distance, loneliness, or digital overconnection are making real intimacy harder to reach.'
+    },
+    renewal: {
+      week: 'Week 4',
+      title: 'Renew Your Mind',
+      href: 'week4.html',
+      body: 'Lead with renewal when the need is less about activity and more about reframing how life is being interpreted.'
+    },
+    anxiety: {
+      week: 'Week 5',
+      title: 'Suffering & Anxiety',
+      href: 'week5.html',
+      body: 'This is the right entry when people need honest language for anxiety, suffering, and compassionate presence.'
+    },
+    courage: {
+      week: 'Week 6',
+      title: 'Courage to Show Up',
+      href: 'week6.html',
+      body: 'Use this when the biggest need is for brave participation, visible care, and actually showing up.'
+    },
+    comparison: {
+      week: 'Week 9',
+      title: 'Beyond Comparison',
+      href: 'week9.html',
+      body: 'Start here when identity, self-measurement, and quiet insecurity are draining the possibility of honest community.'
+    },
+    presence: {
+      week: 'Week 10',
+      title: 'Practicing Presence',
+      href: 'week10.html',
+      body: 'This works best when the real hunger is for attention, rest, and a less distracted way of being together.'
+    }
+  };
+
+  var weekEl = document.getElementById('checkin-week');
+  var titleEl = document.getElementById('checkin-title');
+  var bodyEl = document.getElementById('checkin-body');
+  var linkEl = document.getElementById('checkin-link');
+  var inviteEl = document.getElementById('invite-preview');
+  var copyButton = document.getElementById('copy-invite');
+
+  function chooseRecommendation() {
+    if (state.friction === 'anxiety') return resultMap.anxiety;
+    if (state.friction === 'comparison') return resultMap.comparison;
+    if (state.friction === 'isolation') return resultMap.isolation;
+    if (state.desire === 'presence') return resultMap.presence;
+    if (state.desire === 'courage') return resultMap.courage;
+    if (state.desire === 'renewal') return resultMap.renewal;
+    if (state.format === 'one-on-one') return resultMap.fear;
+    return resultMap.connection;
+  }
+
+  function inviteText(result) {
+    return 'Want to meet for coffee and try ' + result.week + ' of Percolate with me? It is designed for real conversation, not pressure, and I think it could be a good starting point.';
+  }
+
+  function updateResult() {
+    var result = chooseRecommendation();
+    weekEl.textContent = result.week;
+    titleEl.textContent = result.title;
+    bodyEl.textContent = result.body;
+    linkEl.setAttribute('href', result.href);
+    inviteEl.textContent = inviteText(result);
+  }
+
+  panel.addEventListener('click', function (event) {
+    var button = event.target.closest('.checkin-option');
+    if (!button) return;
+
+    var question = button.closest('.checkin-question');
+    if (!question) return;
+
+    var key = question.getAttribute('data-question');
+    var value = button.getAttribute('data-value');
+    if (!key || !value) return;
+
+    state[key] = value;
+    Array.prototype.forEach.call(question.querySelectorAll('.checkin-option'), function (item) {
+      item.classList.toggle('is-selected', item === button);
+    });
+    updateResult();
+  });
+
+  if (copyButton) {
+    copyButton.addEventListener('click', function () {
+      var text = inviteEl.textContent || '';
+      if (!text) return;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () {
+          copyButton.textContent = 'Invite copied';
+          window.setTimeout(function () {
+            copyButton.textContent = 'Copy invite text';
+          }, 1800);
+        });
+      }
+    });
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('.checkin-question'), function (question) {
+    var first = question.querySelector('.checkin-option');
+    if (first) first.classList.add('is-selected');
+  });
+
+  updateResult();
+})();
+
+/* ============================================
    PERCOLATE BIBLE STUDY — Scripture Modal
    ============================================ */
 
