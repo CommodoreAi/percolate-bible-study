@@ -1925,6 +1925,22 @@ ul {
   transform: rotate(5deg);
 }
 
+.post-it {
+  position: relative;
+  z-index: 1;
+  width: min(420px, calc(100% - 2rem));
+  margin: 1.35rem auto 0;
+  padding: 1rem 1.1rem 1.2rem;
+  background: #fff59d;
+  color: #333;
+  border-bottom-right-radius: 20px 5px;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+  font-family: Georgia, serif;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  transform: rotate(2deg);
+}
+
 @keyframes posterFloat {
   0%, 100% {
     transform: scale(1.18) translateY(0) rotate(-0.35deg);
