@@ -17,6 +17,17 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+/* View Transitions API — smooth cross-page fade (Chrome/Edge 111+) */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.25s;
+  animation-timing-function: ease-in-out;
+}
+
 body {
   font-family: 'Oswald', sans-serif;
   font-weight: 300;
@@ -1325,9 +1336,42 @@ ul {
 }
 
 /* ============================================
-   RESPONSIVE — Tablet & Desktop
+   RESPONSIVE
    ============================================ */
 
+/* Small phones */
+@media (max-width: 380px) {
+  .session-hero {
+    padding: 2.5rem 1rem 2rem;
+  }
+
+  .section-card {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    padding: 1.25rem 1rem;
+  }
+
+  .dual-section {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .key-verse-wrap {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .key-verse {
+    max-width: 95%;
+    padding: 1.25rem;
+  }
+
+  .next-week-cta {
+    padding: 0 0.5rem;
+  }
+}
+
+/* Tablet & Desktop */
 @media (min-width: 600px) {
   .dual-section {
     flex-direction: row;
@@ -1432,6 +1476,96 @@ ul {
   .session-page .next-week-cta,
   .session-page .esv-copyright {
     opacity: 1;
+  }
+}
+
+/* ============================================
+   PRINT
+   ============================================ */
+
+@media print {
+  .page-bg,
+  .top-nav,
+  .session-progress,
+  .next-week-cta,
+  .modal-overlay,
+  .esv-copyright,
+  .site-footer {
+    display: none !important;
+  }
+
+  body,
+  .session-page {
+    background: #fff !important;
+    color: #222 !important;
+  }
+
+  .session-page::before {
+    display: none !important;
+  }
+
+  .content-wrap {
+    max-width: 100%;
+  }
+
+  .session-hero {
+    padding-top: 1rem;
+  }
+
+  .session-hero .session-title {
+    color: #222;
+    text-shadow: none;
+    font-size: 2.4rem;
+  }
+
+  .session-hero::after {
+    background: #ccc;
+  }
+
+  .section-card,
+  .dual-card {
+    background: #f8f8f8 !important;
+    border: 1px solid #ddd !important;
+    box-shadow: none !important;
+    color: #222 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    break-inside: avoid;
+  }
+
+  .key-verse {
+    background: #f0f0f0 !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+    color: #222 !important;
+  }
+
+  .key-verse::after {
+    display: none !important;
+  }
+
+  .reading-link {
+    color: #222 !important;
+    border-color: #aaa !important;
+    background: transparent !important;
+  }
+
+  .week-badge {
+    color: #fff;
+  }
+
+  a {
+    color: #222 !important;
+  }
+
+  .section-card h2,
+  .dual-card h2 {
+    color: #444 !important;
+  }
+
+  .discussion-list li::before {
+    background: #666 !important;
+    box-shadow: none !important;
   }
 }
 
