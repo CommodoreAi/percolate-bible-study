@@ -14,125 +14,210 @@
     }
   </style>
 </head>
-<body>
+<body class="home-page">
 
 <div class="page-bg" role="presentation"></div>
 
 <div class="content-wrap">
 
-  <!-- Hero -->
   <header class="home-hero">
-    <h1 class="logo-title">Percolate</h1>
-    <p class="subtitle">A 12-Week Bible Study</p>
-    <p class="tagline">Gathering for Real <span>&bull;</span> Faith <span>&bull;</span> Friendships <span>&bull;</span> Conversation</p>
+    <div class="hero-badge">Angela Creason MFA Thesis Project</div>
+    <div class="hero-layout">
+      <div class="hero-copy">
+        <p class="eyebrow">Gathering for Real</p>
+        <h1 class="logo-title">Percolate</h1>
+        <p class="subtitle">A 12-Week Bible Study</p>
+        <p class="tagline">Faith <span>&bull;</span> Friendships <span>&bull;</span> Conversation <span>&bull;</span> Presence</p>
+        <p class="hero-summary">
+          A guided series of conversations about anxiety, isolation, courage,
+          renewal, and what it means to keep showing up for one another in a
+          digitally saturated world.
+        </p>
+        <div class="hero-actions">
+          <a href="week1.html" class="hero-button hero-button--solid">Start Week 1</a>
+          <a href="#study-map" class="hero-button hero-button--ghost">Explore the study</a>
+          <a href="mfa-research.pdf" class="hero-link">Read the thesis chapters</a>
+        </div>
+      </div>
+
+      <aside class="hero-sidekick">
+        <p class="sidekick-label">Why Percolate exists</p>
+        <p class="sidekick-copy">
+          Percolate was designed as a soft but intentional container for honest
+          table conversation. Each week pairs scripture, reflection, and
+          personal practice so participants can move from guarded distance to
+          embodied connection.
+        </p>
+        <div class="sidekick-stats">
+          <div>
+            <span class="stat-value">12</span>
+            <span class="stat-label">weeks</span>
+          </div>
+          <div>
+            <span class="stat-value">4</span>
+            <span class="stat-label">core color phases</span>
+          </div>
+          <div>
+            <span class="stat-value">1</span>
+            <span class="stat-label">shared table</span>
+          </div>
+        </div>
+      </aside>
+    </div>
   </header>
 
-  <!-- Session Grid -->
-  <nav aria-label="Session navigation">
-    <div class="session-grid">
-
-      <a href="week1.html" class="session-card" style="background:#4dc0ab;">
-        <div class="card-inner">
-          <span class="week-num">Week 1</span>
-          <span class="card-title">Made for Connection</span>
+  <main>
+    <section class="home-board" id="study-map">
+      <div class="board-heading">
+        <div>
+          <p class="board-kicker">Study map</p>
+          <h2>The weeks should feel alive before you ever click in.</h2>
         </div>
-      </a>
+        <p class="board-intro">
+          Hover or focus a week to preview its emotional thread, reflective
+          prompt, and movement through the larger journey.
+        </p>
+      </div>
 
-      <a href="week2.html" class="session-card" style="background:#a7d053;">
-        <div class="card-inner">
-          <span class="week-num">Week 2</span>
-          <span class="card-title">Don't Be Afraid</span>
-        </div>
-      </a>
+      <div class="board-layout">
+        <article class="preview-panel" id="preview-panel">
+          <p class="preview-label">Currently brewing</p>
+          <p class="preview-week" id="preview-week">Week 1</p>
+          <h3 id="preview-title">Made for Connection</h3>
+          <p class="preview-summary" id="preview-summary">
+            Opening the study by naming our need for connection and the courage
+            it takes to be known face to face.
+          </p>
+          <div class="preview-thread">
+            <span class="thread-label">Conversation thread</span>
+            <p id="preview-thread">
+              Where does real connection still feel possible, and where has fear
+              taught you to stay guarded?
+            </p>
+          </div>
+          <a href="week1.html" class="preview-link" id="preview-link">Open this week</a>
+        </article>
 
-      <a href="week3.html" class="session-card" style="background:#f26a24;">
-        <div class="card-inner">
-          <span class="week-num">Week 3</span>
-          <span class="card-title">The Cost of Isolation</span>
-        </div>
-      </a>
+        <nav aria-label="Session navigation">
+          <div class="session-grid">
+            <a href="week1.html" class="session-card is-active session-card--wide" style="--week-color:#4dc0ab;" data-week="Week 1" data-title="Made for Connection" data-summary="Opening the study by naming our need for connection and the courage it takes to be known face to face." data-thread="Where does real connection still feel possible, and where has fear taught you to stay guarded?">
+              <div class="card-inner">
+                <span class="week-num">Week 1</span>
+                <span class="card-title">Made for Connection</span>
+                <span class="card-meta">Connection as design, not accident</span>
+              </div>
+            </a>
+            <a href="week2.html" class="session-card" style="--week-color:#a7d053;" data-week="Week 2" data-title="Don't Be Afraid" data-summary="A study in courage, safety, and what fear keeps us from saying out loud." data-thread="What would shift if fear stopped setting the terms of your relationships?">
+              <div class="card-inner">
+                <span class="week-num">Week 2</span>
+                <span class="card-title">Don't Be Afraid</span>
+                <span class="card-meta">Naming what fear steals</span>
+              </div>
+            </a>
+            <a href="week3.html" class="session-card" style="--week-color:#f26a24;" data-week="Week 3" data-title="The Cost of Isolation" data-summary="Looking honestly at loneliness, digital distance, and the habits that make retreat feel easier than trust." data-thread="How has isolation protected you, and how has it quietly diminished you?">
+              <div class="card-inner">
+                <span class="week-num">Week 3</span>
+                <span class="card-title">The Cost of Isolation</span>
+                <span class="card-meta">What distance really costs</span>
+              </div>
+            </a>
+            <a href="week4.html" class="session-card session-card--tall" style="--week-color:#b72327;" data-week="Week 4" data-title="Renew Your Mind" data-summary="Turning toward transformation, not by force, but through attention, truth, and new patterns of thought." data-thread="What thought pattern most needs renewal in the way you see God, yourself, or others?">
+              <div class="card-inner">
+                <span class="week-num">Week 4</span>
+                <span class="card-title">Renew Your Mind</span>
+                <span class="card-meta">Shifting the inner script</span>
+              </div>
+            </a>
+            <a href="week5.html" class="session-card session-card--wide" style="--week-color:#007daa;" data-week="Week 5" data-title="Suffering &amp; Anxiety" data-summary="Making room for pain, worry, and the need for a faith that can stay present in hard seasons." data-thread="What does compassionate presence look like when anxiety keeps returning?">
+              <div class="card-inner">
+                <span class="week-num">Week 5</span>
+                <span class="card-title">Suffering &amp; Anxiety</span>
+                <span class="card-meta">Presence without fixing</span>
+              </div>
+            </a>
+            <a href="week6.html" class="session-card" style="--week-color:#cf5ea1;" data-week="Week 6" data-title="Courage to Show Up" data-summary="An invitation to practice visible courage, mutual care, and small acts of honest participation." data-thread="What changes when showing up becomes the brave thing, not the easy thing?">
+              <div class="card-inner">
+                <span class="week-num">Week 6</span>
+                <span class="card-title">Courage to Show Up</span>
+                <span class="card-meta">Bravery with other people in mind</span>
+              </div>
+            </a>
+            <a href="week7.html" class="session-card" style="--week-color:#9a3a96;" data-week="Week 7" data-title="Strength in Numbers" data-summary="Exploring unity, interdependence, and how shared life can become a source of resilience." data-thread="Where have you experienced strength because someone stayed with you?">
+              <div class="card-inner">
+                <span class="week-num">Week 7</span>
+                <span class="card-title">Strength in Numbers</span>
+                <span class="card-meta">Community as resilience</span>
+              </div>
+            </a>
+            <a href="week8.html" class="session-card" style="--week-color:#563f98;" data-week="Week 8" data-title="Walking Together" data-summary="Turning shared belief into lived companionship, rhythm, and movement through ordinary life." data-thread="What would it mean to walk with people, not just agree with them?">
+              <div class="card-inner">
+                <span class="week-num">Week 8</span>
+                <span class="card-title">Walking Together</span>
+                <span class="card-meta">Faith as shared movement</span>
+              </div>
+            </a>
+            <a href="week9.html" class="session-card session-card--wide" style="--week-color:#4dc0ab;" data-week="Week 9" data-title="Beyond Comparison" data-summary="Returning to identity, worth, and freedom from the pressure to measure your life against everyone else." data-thread="How has comparison distorted the way you see your calling or your relationships?">
+              <div class="card-inner">
+                <span class="week-num">Week 9</span>
+                <span class="card-title">Beyond Comparison</span>
+                <span class="card-meta">Identity without performance</span>
+              </div>
+            </a>
+            <a href="week10.html" class="session-card" style="--week-color:#a7d053;" data-week="Week 10" data-title="Practicing Presence" data-summary="Recovering attention, stillness, and awareness in a world trained to keep us scattered." data-thread="What practices help you notice God, yourself, and the people in front of you?">
+              <div class="card-inner">
+                <span class="week-num">Week 10</span>
+                <span class="card-title">Practicing Presence</span>
+                <span class="card-meta">Attention as spiritual work</span>
+              </div>
+            </a>
+            <a href="week11.html" class="session-card" style="--week-color:#f26a24;" data-week="Week 11" data-title="Growing Together" data-summary="Letting formation unfold relationally, with enough patience for real change to take root." data-thread="What kind of growth only becomes visible when you stay in community long enough?">
+              <div class="card-inner">
+                <span class="week-num">Week 11</span>
+                <span class="card-title">Growing Together</span>
+                <span class="card-meta">Formation that takes time</span>
+              </div>
+            </a>
+            <a href="week12.html" class="session-card session-card--tall" style="--week-color:#b72327;" data-week="Week 12" data-title="Living Out Love" data-summary="Closing the study by asking how love becomes public, embodied, and durable beyond the final session." data-thread="What might living out love require from you after the study ends?">
+              <div class="card-inner">
+                <span class="week-num">Week 12</span>
+                <span class="card-title">Living Out Love</span>
+                <span class="card-meta">Carrying the table outward</span>
+              </div>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </section>
 
-      <a href="week4.html" class="session-card" style="background:#b72327;">
-        <div class="card-inner">
-          <span class="week-num">Week 4</span>
-          <span class="card-title">Renew Your Mind</span>
-        </div>
-      </a>
-
-      <a href="week5.html" class="session-card" style="background:#007daa;">
-        <div class="card-inner">
-          <span class="week-num">Week 5</span>
-          <span class="card-title">Suffering &amp; Anxiety</span>
-        </div>
-      </a>
-
-      <a href="week6.html" class="session-card" style="background:#cf5ea1;">
-        <div class="card-inner">
-          <span class="week-num">Week 6</span>
-          <span class="card-title">Courage to Show Up</span>
-        </div>
-      </a>
-
-      <a href="week7.html" class="session-card" style="background:#9a3a96;">
-        <div class="card-inner">
-          <span class="week-num">Week 7</span>
-          <span class="card-title">Strength in Numbers</span>
-        </div>
-      </a>
-
-      <a href="week8.html" class="session-card" style="background:#563f98;">
-        <div class="card-inner">
-          <span class="week-num">Week 8</span>
-          <span class="card-title">Walking Together</span>
-        </div>
-      </a>
-
-      <a href="week9.html" class="session-card" style="background:#4dc0ab;">
-        <div class="card-inner">
-          <span class="week-num">Week 9</span>
-          <span class="card-title">Beyond Comparison</span>
-        </div>
-      </a>
-
-      <a href="week10.html" class="session-card" style="background:#a7d053;">
-        <div class="card-inner">
-          <span class="week-num">Week 10</span>
-          <span class="card-title">Practicing Presence</span>
-        </div>
-      </a>
-
-      <a href="week11.html" class="session-card" style="background:#f26a24;">
-        <div class="card-inner">
-          <span class="week-num">Week 11</span>
-          <span class="card-title">Growing Together</span>
-        </div>
-      </a>
-
-      <a href="week12.html" class="session-card" style="background:#b72327;">
-        <div class="card-inner">
-          <span class="week-num">Week 12</span>
-          <span class="card-title">Living Out Love</span>
-        </div>
-      </a>
-
-    </div>
-  </nav>
-
-  <div class="home-divider"></div>
-
-  <!-- Start a Conversation -->
-  <section class="home-section">
-    <h2>Start a Conversation</h2>
-    <p>Percolate is designed for small groups gathering over coffee, tea, or whatever brings you to the table. Each week explores a theme through scripture, reflection, and honest discussion. No perfect answers required — just show up and be real.</p>
-  </section>
-
-  <div class="home-divider"></div>
-
-  <!-- About -->
-  <section class="home-section">
-    <h2>About Percolate</h2>
-    <p>Percolate is a 12-week Bible study created by Angela Creason as part of her Master of Fine Arts thesis project. It explores how faith, authentic friendships, and face-to-face conversation can help us navigate anxiety, isolation, and the longing for genuine connection in a digitally saturated world.</p>
-  </section>
+    <section class="home-rhythm">
+      <article class="rhythm-card">
+        <p class="rhythm-kicker">How it works</p>
+        <h2>Built for small groups, coffee tables, and honest conversation.</h2>
+        <p>
+          Each week is structured to move from scripture into reflection,
+          discussion, prayer, and embodied practice. It is thoughtful without
+          becoming rigid.
+        </p>
+      </article>
+      <article class="rhythm-card">
+        <p class="rhythm-kicker">Design logic</p>
+        <h2>The color cycle becomes part of the emotional rhythm.</h2>
+        <p>
+          Angela’s repeating palette gives the study a visual cadence: calm,
+          bright, urgent, grounded, then renewed again. The system becomes part
+          of the experience.
+        </p>
+      </article>
+      <article class="rhythm-card">
+        <p class="rhythm-kicker">Why it matters</p>
+        <h2>Percolate treats presence as a form of care.</h2>
+        <p>
+          This isn’t content for passive scrolling. It is a designed invitation
+          back into embodied faith, conversation, and relational attention.
+        </p>
+      </article>
+    </section>
+  </main>
 
   <footer class="site-footer">
     &copy; Angela Creason &middot; MFA Thesis Project
@@ -140,5 +225,6 @@
 
 </div>
 
+<script src="script.js"></script>
 </body>
 </html>
