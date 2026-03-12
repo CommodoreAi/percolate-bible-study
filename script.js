@@ -312,3 +312,49 @@
     observer.observe(targets[i]);
   }
 })();
+
+/* ============================================
+   PERCOLATE BIBLE STUDY — Notebook Chrome
+   ============================================ */
+
+(function () {
+  'use strict';
+
+  if (!document.body.classList.contains('session-page')) return;
+
+  var body = document.body;
+  var match = window.location.pathname.match(/week(\d+)\.html/i);
+  var weekNumber = match ? Number(match[1]) : NaN;
+  var patternClasses = ['pattern-dots', 'pattern-grid', 'pattern-waves', 'pattern-burst'];
+
+  if (!Number.isNaN(weekNumber)) {
+    body.classList.add(patternClasses[(weekNumber - 1) % patternClasses.length]);
+    body.setAttribute('data-week-number', String(weekNumber));
+  }
+
+  if (!document.querySelector('.bookmark-fab')) {
+    var fab = document.createElement('a');
+    fab.className = 'bookmark-fab';
+    fab.href = 'index.html';
+    fab.setAttribute('aria-label', 'Return to Percolate home');
+    fab.innerHTML = '<span>Home</span>';
+    document.body.appendChild(fab);
+  }
+
+  var ticking = false;
+
+  function updateNotebookMotion() {
+    var drift = Math.min(window.scrollY * 0.04, 18);
+    body.style.setProperty('--page-shift', drift.toFixed(2) + 'px');
+    ticking = false;
+  }
+
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(updateNotebookMotion);
+  }
+
+  updateNotebookMotion();
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();

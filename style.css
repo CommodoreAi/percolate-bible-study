@@ -90,10 +90,10 @@ ul {
 }
 
 .top-nav .nav-brand {
+  font-family: 'Caveat', cursive;
   font-weight: 700;
-  font-size: 1.1rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
 }
 
 .top-nav .nav-links {
@@ -1231,6 +1231,576 @@ ul {
   font-size: 0.7rem;
   font-weight: 300;
   letter-spacing: 0.1em;
+}
+
+/* ============================================
+   SESSION PAGES — POSTER NOTEBOOK OVERRIDE
+   ============================================ */
+
+.session-page {
+  --paper: #f6ecd4;
+  --paper-bright: #fff9ef;
+  --paper-shadow: #d8c08b;
+  --ink: #23170c;
+  --ink-soft: rgba(35, 23, 12, 0.72);
+  --paper-line: rgba(70, 48, 24, 0.18);
+  --cream-ink: #f8ef9d;
+  --page-shift: 0px;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top, rgba(255,255,255,0.08), transparent 45%),
+    color-mix(in srgb, var(--week-bg) 84%, #120c13 16%);
+}
+
+.session-page .page-bg {
+  transform: scale(1.04) translate3d(0, calc(var(--page-shift) * -1), 0);
+  transition: transform 0.45s ease;
+  filter: saturate(1.12) contrast(1.04);
+}
+
+.session-page .page-bg::before,
+.session-page .page-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.session-page .page-bg::before {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.05), rgba(0,0,0,0.08)),
+    radial-gradient(circle at 18% 20%, rgba(255,255,255,0.14), transparent 24%),
+    radial-gradient(circle at 82% 18%, rgba(255,255,255,0.11), transparent 20%);
+}
+
+.session-page .page-bg::after {
+  opacity: 0.28;
+  background:
+    radial-gradient(circle at 12% 16%, rgba(255,255,255,0.28) 0 2px, transparent 2.4px),
+    radial-gradient(circle at 74% 68%, rgba(0,0,0,0.22) 0 1.4px, transparent 1.8px);
+  background-size: 18px 18px, 22px 22px;
+}
+
+.session-page.pattern-dots .page-bg {
+  background:
+    radial-gradient(circle, color-mix(in srgb, var(--week-accent) 34%, #ffffff 8%) 0 18%, transparent 19%) 0 0 / 34px 34px,
+    radial-gradient(circle, rgba(0,0,0,0.16) 0 12%, transparent 13%) 17px 17px / 34px 34px,
+    linear-gradient(180deg, color-mix(in srgb, var(--week-bg) 92%, #ffffff 4%) 0%, color-mix(in srgb, var(--week-bg) 88%, #130d12 12%) 100%);
+}
+
+.session-page.pattern-grid .page-bg {
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.14) 0 7px, transparent 7px 100%) 0 0 / 30px 30px,
+    linear-gradient(rgba(0,0,0,0.16) 0 7px, transparent 7px 100%) 0 0 / 30px 30px,
+    linear-gradient(180deg, color-mix(in srgb, var(--week-bg) 90%, #ffffff 5%) 0%, color-mix(in srgb, var(--week-bg) 86%, #130d12 14%) 100%);
+}
+
+.session-page.pattern-waves .page-bg {
+  background:
+    radial-gradient(circle at 0 100%, transparent 24px, rgba(255,255,255,0.18) 24px 28px, transparent 28px) 0 0 / 54px 28px,
+    radial-gradient(circle at 27px 0, transparent 24px, rgba(0,0,0,0.18) 24px 28px, transparent 28px) 0 14px / 54px 28px,
+    linear-gradient(180deg, color-mix(in srgb, var(--week-bg) 92%, #ffffff 3%) 0%, color-mix(in srgb, var(--week-bg) 86%, #140c12 14%) 100%);
+}
+
+.session-page.pattern-burst .page-bg {
+  background:
+    repeating-conic-gradient(from 0deg at 50% 50%, rgba(255,255,255,0.15) 0 14deg, transparent 14deg 28deg),
+    linear-gradient(180deg, color-mix(in srgb, var(--week-bg) 92%, #ffffff 4%) 0%, color-mix(in srgb, var(--week-bg) 86%, #120d12 14%) 100%);
+}
+
+.session-page .content-wrap {
+  position: relative;
+  max-width: 1120px;
+  margin: 1rem auto 2.5rem;
+  padding: 0 0 2rem;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.08) 3%, transparent 3.5%),
+    linear-gradient(180deg, var(--paper-bright) 0%, var(--paper) 100%);
+  border: 2px solid rgba(67, 46, 21, 0.2);
+  border-radius: 34px;
+  box-shadow:
+    0 28px 90px rgba(0,0,0,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+  overflow: hidden;
+}
+
+.session-page .content-wrap::before,
+.session-page .content-wrap::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.session-page .content-wrap::before {
+  top: 0;
+  bottom: 0;
+  left: 1.2rem;
+  width: 1.5rem;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, rgba(72, 50, 24, 0.18) 0 3px, transparent 3.6px) center top / 12px 22px repeat-y,
+    linear-gradient(180deg, rgba(255,255,255,0.38), rgba(0,0,0,0.05));
+  opacity: 0.8;
+}
+
+.session-page .content-wrap::after {
+  inset: 0;
+  opacity: 0.18;
+  background:
+    radial-gradient(circle at 20% 22%, rgba(0,0,0,0.1) 0 1.1px, transparent 1.5px),
+    radial-gradient(circle at 72% 66%, rgba(255,255,255,0.45) 0 1.1px, transparent 1.5px);
+  background-size: 16px 16px, 18px 18px;
+}
+
+.session-page .top-nav {
+  padding: 1rem 1.25rem 1rem 3.9rem;
+  color: var(--ink);
+  background: rgba(252, 244, 226, 0.88);
+  border-bottom: 2px dashed rgba(72, 50, 24, 0.16);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.session-page .top-nav .nav-links a,
+.session-page .top-nav .nav-brand,
+.session-page .nav-arrow {
+  color: var(--ink);
+}
+
+.session-page .top-nav .nav-links a:hover,
+.session-page .nav-arrow:hover {
+  background: rgba(54, 35, 17, 0.08);
+}
+
+.session-page .session-progress {
+  height: 7px;
+  background: rgba(61, 41, 20, 0.12);
+}
+
+.session-page .progress-bar {
+  border-radius: 999px;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.26);
+}
+
+.session-page .session-hero {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 1.1rem 4.3rem;
+  text-align: left;
+}
+
+.session-page .session-hero::after {
+  display: none;
+}
+
+.session-page .week-badge {
+  color: var(--paper-bright);
+  border: 2px solid rgba(35, 23, 12, 0.2);
+  box-shadow: 4px 4px 0 rgba(67, 46, 21, 0.12);
+}
+
+.session-page .session-hero .week-label {
+  color: var(--ink-soft);
+  margin-bottom: 0.8rem;
+}
+
+.session-page .session-hero .session-title {
+  position: relative;
+  display: inline-block;
+  padding: 0.95rem 1.55rem 1.2rem;
+  color: var(--cream-ink);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--week-accent) 84%, #ffffff 4%) 0%, color-mix(in srgb, var(--week-accent) 92%, #000000 8%) 100%);
+  border: 6px solid #efe07f;
+  border-radius: 999px;
+  box-shadow:
+    0 14px 0 rgba(93, 66, 34, 0.12),
+    0 18px 38px rgba(0,0,0,0.16);
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.8rem, 8vw, 5.7rem);
+  line-height: 0.9;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  transform: rotate(-2.4deg);
+  animation: titleBob 4.8s ease-in-out infinite;
+}
+
+.session-page .session-hero .session-title::before,
+.session-page .session-hero .session-title::after {
+  content: "";
+  position: absolute;
+  background: inherit;
+}
+
+.session-page .session-hero .session-title::before {
+  left: 1.8rem;
+  bottom: -1.25rem;
+  width: 2.8rem;
+  height: 2rem;
+  border-left: 6px solid #efe07f;
+  border-bottom: 6px solid #efe07f;
+  border-bottom-left-radius: 1.8rem;
+  transform: skewX(-36deg);
+}
+
+.session-page .session-hero .session-title::after {
+  left: 48%;
+  bottom: -2rem;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 50%;
+  border: 4px solid #efe07f;
+  transform: translateX(-50%);
+}
+
+@keyframes titleBob {
+  0%, 100% { transform: rotate(-2.4deg) translateY(0); }
+  50% { transform: rotate(-1.4deg) translateY(-4px); }
+}
+
+.session-page .section-card,
+.session-page .dual-card,
+.session-page .key-verse {
+  color: var(--ink);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow:
+    0 12px 0 rgba(90, 66, 36, 0.08),
+    0 18px 36px rgba(0,0,0,0.12);
+}
+
+.session-page .section-card,
+.session-page .dual-card {
+  position: relative;
+  background: rgba(255, 250, 240, 0.96);
+  border: 2px solid rgba(73, 50, 24, 0.18);
+  overflow: hidden;
+}
+
+.session-page .section-card::before,
+.session-page .dual-card::before {
+  content: "";
+  position: absolute;
+  top: 1rem;
+  bottom: 1rem;
+  left: 0.9rem;
+  width: 0.45rem;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, rgba(65, 44, 20, 0.22) 0 2px, transparent 2.4px) center top / 8px 18px repeat-y;
+  opacity: 0.75;
+}
+
+.session-page .section-card h2,
+.session-page .dual-card h2 {
+  color: color-mix(in srgb, var(--week-accent) 78%, #6d4b1b 22%);
+  opacity: 1;
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.14em;
+}
+
+.session-page .section-card h2,
+.session-page .section-card p,
+.session-page .section-card ul,
+.session-page .dual-card h2,
+.session-page .dual-card p {
+  position: relative;
+  z-index: 1;
+}
+
+.session-page .section-card h2,
+.session-page .section-card p,
+.session-page .section-card ul,
+.session-page .reading-links,
+.session-page .dual-card h2,
+.session-page .dual-card p {
+  margin-left: 1.05rem;
+}
+
+.session-page .section-card[aria-label="Coffee Moment"] {
+  transform: rotate(-1.15deg);
+  background:
+    radial-gradient(circle at 88% 18%, rgba(255, 209, 102, 0.28), transparent 16%),
+    rgba(255, 250, 240, 0.96);
+}
+
+.session-page .coffee-moment {
+  align-items: center;
+}
+
+.session-page .coffee-icon {
+  font-size: 2.7rem;
+  color: var(--week-accent);
+  text-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.session-page .coffee-moment p,
+.session-page .reflection-text,
+.session-page .discussion-list li,
+.session-page .dual-card p,
+.session-page .reading-link,
+.session-page .esv-copyright p {
+  color: var(--ink);
+}
+
+.session-page .key-verse-wrap {
+  justify-content: flex-start;
+  padding-right: 0;
+}
+
+.session-page .key-verse {
+  max-width: min(560px, 100%);
+  padding: 1.2rem 1.55rem 1.15rem;
+  background: rgba(255, 251, 244, 0.98);
+  border: 6px solid var(--week-accent);
+  border-radius: 999px;
+  transform: rotate(1.35deg);
+}
+
+.session-page .key-verse::after {
+  left: 2rem;
+  bottom: -1.4rem;
+  width: 3rem;
+  height: 2.1rem;
+  border-left: 6px solid var(--week-accent);
+  border-bottom: 6px solid var(--week-accent);
+  border-bottom-left-radius: 2rem;
+  border-top: 0;
+  border-right: 0;
+  background: rgba(255, 251, 244, 0.98);
+  transform: skewX(-34deg);
+}
+
+.session-page .key-verse blockquote {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(1.3rem, 3vw, 2rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: 0.01em;
+}
+
+.session-page .key-verse cite {
+  margin-top: 0.55rem;
+  color: var(--ink-soft);
+}
+
+.session-page .section-card[aria-label="Reflection"] {
+  transform: rotate(0.55deg);
+}
+
+.session-page .section-card[aria-label="Discussion Questions"] {
+  border: 6px solid var(--week-accent);
+  border-radius: 52px;
+  background: rgba(255, 251, 244, 0.98);
+  transform: rotate(-1deg);
+}
+
+.session-page .section-card[aria-label="Discussion Questions"]::after {
+  content: "";
+  position: absolute;
+  left: 1.9rem;
+  bottom: -1.25rem;
+  width: 3.1rem;
+  height: 2.1rem;
+  background: rgba(255, 251, 244, 0.98);
+  border-left: 6px solid var(--week-accent);
+  border-bottom: 6px solid var(--week-accent);
+  border-bottom-left-radius: 2rem;
+  transform: skewX(-34deg);
+}
+
+.session-page .discussion-list li {
+  border-bottom-color: rgba(73, 50, 24, 0.12);
+  font-size: 1.05rem;
+  font-weight: 400;
+}
+
+.session-page .discussion-list li::before {
+  top: 0.9rem;
+  width: 0.52rem;
+  height: 0.52rem;
+  box-shadow: none;
+}
+
+.session-page .dual-section {
+  gap: 1.1rem;
+}
+
+.session-page .dual-card {
+  background: rgba(255, 250, 241, 0.96);
+}
+
+.session-page .dual-card[aria-label="Prayer"] {
+  transform: rotate(1deg);
+}
+
+.session-page .dual-card[aria-label="Personal Practice"] {
+  transform: rotate(-1.2deg);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.38), transparent 28%),
+    rgba(255, 248, 230, 0.98);
+}
+
+.session-page .dual-card[aria-label="Personal Practice"] p {
+  font-family: 'Caveat', cursive;
+  font-size: 1.95rem;
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+}
+
+.session-page .reading-link {
+  background: rgba(255,255,255,0.7);
+  border-color: rgba(73, 50, 24, 0.18);
+  color: var(--ink);
+}
+
+.session-page .reading-link:hover,
+.session-page .reading-link:focus-visible {
+  background: color-mix(in srgb, var(--week-bg) 16%, #ffffff 84%);
+}
+
+.session-page .next-week-link {
+  color: var(--ink);
+  background: rgba(255, 247, 230, 0.92);
+  border-width: 2px;
+  border-radius: 26px;
+  box-shadow:
+    0 10px 0 rgba(90, 66, 36, 0.08),
+    0 16px 32px rgba(0,0,0,0.12);
+}
+
+.session-page .next-week-label {
+  color: var(--ink-soft);
+}
+
+.session-page .next-week-title {
+  color: color-mix(in srgb, var(--week-accent) 82%, #2c2012 18%);
+}
+
+.session-page .esv-copyright {
+  padding-bottom: 2.25rem;
+}
+
+.session-page .site-footer {
+  color: rgba(35, 23, 12, 0.58);
+  opacity: 1;
+}
+
+.bookmark-fab {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 220;
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 74px;
+  height: 88px;
+  padding-top: 1rem;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 76%, 0 100%);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--week-accent, #4dc0ab) 92%, #ffffff 4%) 0%, color-mix(in srgb, var(--week-accent, #4dc0ab) 88%, #000000 12%) 100%);
+  color: #fff8db;
+  border: 2px solid rgba(35, 23, 12, 0.16);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.26);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.bookmark-fab:hover,
+.bookmark-fab:focus-visible {
+  transform: translateY(-4px) rotate(-2deg);
+  box-shadow: 0 24px 48px rgba(0,0,0,0.3);
+}
+
+.bookmark-fab span {
+  pointer-events: none;
+}
+
+@media (min-width: 860px) {
+  .session-page .session-hero {
+    padding-left: 5.5rem;
+    padding-right: 4rem;
+  }
+
+  .session-page .section-card[aria-label="Coffee Moment"],
+  .session-page .section-card[aria-label="Reflection"],
+  .session-page .section-card[aria-label="Additional Reading"] {
+    margin-left: 5.5rem;
+    margin-right: 34%;
+  }
+
+  .session-page .key-verse-wrap,
+  .session-page .section-card[aria-label="Discussion Questions"],
+  .session-page .dual-section,
+  .session-page .next-week-cta {
+    margin-left: 32%;
+    margin-right: 2rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .session-page .content-wrap {
+    margin: 0;
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+  }
+
+  .session-page .content-wrap::before {
+    left: 0.85rem;
+  }
+
+  .session-page .top-nav {
+    padding-left: 3.25rem;
+  }
+
+  .session-page .session-hero {
+    padding-left: 3.4rem;
+    padding-right: 1.1rem;
+  }
+
+  .session-page .section-card,
+  .session-page .dual-section,
+  .session-page .key-verse-wrap {
+    margin-left: 0.8rem;
+    margin-right: 0.8rem;
+  }
+
+  .session-page .section-card h2,
+  .session-page .section-card p,
+  .session-page .section-card ul,
+  .session-page .reading-links,
+  .session-page .dual-card h2,
+  .session-page .dual-card p {
+    margin-left: 0.8rem;
+  }
+
+  .session-page .key-verse {
+    max-width: 100%;
+  }
+
+  .bookmark-fab {
+    width: 66px;
+    height: 80px;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    padding-top: 0.9rem;
+    font-size: 0.62rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .session-page .page-bg,
+  .session-page .session-hero .session-title,
+  .bookmark-fab {
+    transition: none;
+    animation: none;
+    transform: none;
+  }
 }
 
 /* ============================================
