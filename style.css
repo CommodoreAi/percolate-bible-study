@@ -799,12 +799,19 @@ ul {
   height: 3px;
   background: rgba(0,0,0,0.2);
   position: relative;
+  overflow: hidden;
 }
 
 .progress-bar {
   height: 100%;
   border-radius: 0 2px 2px 0;
-  transition: width 0.5s ease;
+  transform-origin: left;
+  animation: progressFill 0.8s ease-out forwards;
+}
+
+@keyframes progressFill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
 
 .week-badge {
@@ -998,7 +1005,7 @@ ul {
   line-height: 1.6;
 }
 
-/* Key Verse — speech bubble (matching Angela's green bubble design) */
+/* Key Verse — speech bubble */
 .key-verse-wrap {
   display: flex;
   justify-content: flex-end;
@@ -1010,14 +1017,24 @@ ul {
 }
 
 .key-verse {
-  background: linear-gradient(145deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.08) 100%);
+  background: linear-gradient(145deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%);
   border: 1px solid rgba(255,255,255,0.15);
   border-radius: 24px 24px 24px 4px;
   padding: 1.5rem 1.75rem;
   position: relative;
   max-width: 85%;
   text-align: left;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.15),
+    inset 0 1px 0 rgba(255,255,255,0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.key-verse:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 14px 40px rgba(0,0,0,0.2),
+    inset 0 1px 0 rgba(255,255,255,0.12);
 }
 
 .key-verse::after {
@@ -1154,11 +1171,17 @@ ul {
   font-family: 'Oswald', sans-serif;
 }
 
-.reading-link:hover {
+.reading-link:hover,
+.reading-link:focus-visible {
   background: rgba(255,255,255,0.18);
   border-color: rgba(255,255,255,0.35);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.reading-link:focus-visible {
+  outline: 2px solid var(--week-accent, rgba(255,255,255,0.5));
+  outline-offset: 2px;
 }
 
 /* ESV Copyright */
