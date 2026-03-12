@@ -136,3 +136,39 @@
     }
   });
 })();
+
+/* ============================================
+   PERCOLATE BIBLE STUDY — Scroll Reveal
+   ============================================ */
+
+(function () {
+  'use strict';
+
+  if (!document.body.classList.contains('session-page')) return;
+  if (!('IntersectionObserver' in window)) {
+    // Fallback: show everything immediately
+    var all = document.querySelectorAll('.section-card, .key-verse-wrap, .dual-section, .next-week-cta, .esv-copyright');
+    for (var i = 0; i < all.length; i++) all[i].classList.add('is-visible');
+    return;
+  }
+
+  var delay = 0;
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        var el = entry.target;
+        var d = el.getAttribute('data-reveal-delay') || 0;
+        setTimeout(function () {
+          el.classList.add('is-visible');
+        }, Number(d));
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  var targets = document.querySelectorAll('.section-card, .key-verse-wrap, .dual-section, .next-week-cta, .esv-copyright');
+  for (var i = 0; i < targets.length; i++) {
+    targets[i].setAttribute('data-reveal-delay', i * 60);
+    observer.observe(targets[i]);
+  }
+})();

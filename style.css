@@ -600,23 +600,82 @@ ul {
    SESSION PAGES
    ============================================ */
 
-/* Session page entrance animation */
+/* Session page nav accent */
+.session-page .top-nav {
+  border-bottom: 2px solid var(--week-accent, rgba(255,255,255,0.1));
+}
+
+/* Session page background — rich radial gradient depth */
+.session-page .page-bg {
+  background:
+    radial-gradient(circle at 20% 15%, rgba(255,255,255,0.1), transparent 25%),
+    radial-gradient(circle at 80% 20%, color-mix(in srgb, var(--week-bg) 50%, #ffffff 8%), transparent 28%),
+    radial-gradient(circle at 65% 75%, rgba(0,0,0,0.22), transparent 30%),
+    radial-gradient(circle at 30% 85%, color-mix(in srgb, var(--week-bg) 40%, #000000 15%), transparent 35%),
+    var(--week-bg);
+  filter: saturate(1.08);
+}
+
+/* Session page shared inline styles (moved from per-page <style>) */
+.session-progress {
+  height: 3px;
+  background: rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 0 2px 2px 0;
+  transition: width 0.5s ease;
+}
+
+.week-badge {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  opacity: 0.9;
+}
+
+/* Key verse & reading link accent from custom property */
+.session-page .key-verse {
+  border-left-color: var(--week-accent);
+}
+
+.session-page .reading-link:hover {
+  border-color: var(--week-accent);
+}
+
+/* Scroll-triggered reveal animation */
 .session-page .section-card,
 .session-page .key-verse-wrap,
 .session-page .dual-section,
+.session-page .next-week-cta,
+.session-page .esv-copyright {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.session-page .section-card.is-visible,
+.session-page .key-verse-wrap.is-visible,
+.session-page .dual-section.is-visible,
+.session-page .next-week-cta.is-visible,
+.session-page .esv-copyright.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero still uses initial animation (above fold) */
 .session-page .session-hero {
   opacity: 0;
   transform: translateY(20px);
   animation: sectionRise 0.6s ease forwards;
 }
-
-.session-page .session-hero { animation-delay: 0s; }
-.session-page .section-card:nth-of-type(1) { animation-delay: 0.08s; }
-.session-page .key-verse-wrap { animation-delay: 0.12s; }
-.session-page .section-card:nth-of-type(2) { animation-delay: 0.16s; }
-.session-page .section-card:nth-of-type(3) { animation-delay: 0.2s; }
-.session-page .dual-section { animation-delay: 0.24s; }
-.session-page .section-card:nth-of-type(4) { animation-delay: 0.28s; }
 
 @keyframes sectionRise {
   to {
@@ -645,9 +704,10 @@ ul {
 }
 
 .next-week-link:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   background: rgba(0,0,0,0.4);
   border-color: rgba(255,255,255,0.4);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.25);
 }
 
 .next-week-label {
@@ -672,6 +732,19 @@ ul {
 .session-hero {
   padding: 4rem 1.5rem 2.5rem;
   text-align: center;
+  position: relative;
+}
+
+.session-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.25);
 }
 
 .session-hero .week-label {
@@ -685,10 +758,11 @@ ul {
 
 .session-hero .session-title {
   font-weight: 700;
-  font-size: 2.8rem;
-  line-height: 1.05;
-  letter-spacing: 0.04em;
+  font-size: clamp(2.8rem, 10vw, 5rem);
+  line-height: 1.0;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
+  text-shadow: 0 4px 24px rgba(0,0,0,0.18);
 }
 
 /* Card-style sections */
@@ -727,6 +801,12 @@ ul {
   font-size: 2rem;
   flex-shrink: 0;
   line-height: 1;
+  animation: steamPulse 3s ease-in-out infinite;
+}
+
+@keyframes steamPulse {
+  0%, 100% { opacity: 0.85; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-2px); }
 }
 
 .coffee-moment p {
@@ -1089,7 +1169,13 @@ ul {
   .home-hero,
   .home-board,
   .home-rhythm,
-  .home-page .site-footer {
+  .home-page .site-footer,
+  .session-page .session-hero,
+  .session-page .section-card,
+  .session-page .key-verse-wrap,
+  .session-page .dual-section,
+  .session-page .next-week-cta,
+  .session-page .esv-copyright {
     transition: none;
     animation: none;
     transform: none;
@@ -1098,7 +1184,12 @@ ul {
   .home-hero,
   .home-board,
   .home-rhythm,
-  .home-page .site-footer {
+  .home-page .site-footer,
+  .session-page .section-card,
+  .session-page .key-verse-wrap,
+  .session-page .dual-section,
+  .session-page .next-week-cta,
+  .session-page .esv-copyright {
     opacity: 1;
   }
 }
