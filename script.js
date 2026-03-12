@@ -375,11 +375,12 @@
   if (!weekNumber || weekNumber < 1 || weekNumber > 12) return;
 
   var weekPadded = String(weekNumber).padStart(2, '0');
+  var cardSrc = 'cards/week-' + weekPadded + '.png';
   var progress = document.querySelector('.session-progress');
   if (!progress) return;
 
   document.body.classList.add('has-study-card');
-  document.body.style.setProperty('--study-card-image', 'url("cards/week-' + weekPadded + '.png")');
+  document.body.style.setProperty('--study-card-image', 'url("' + cardSrc + '")');
 
   if (!document.querySelector('.study-card-stage')) {
     var stage = document.createElement('section');
@@ -387,9 +388,105 @@
     stage.setAttribute('aria-label', 'Percolate study card artwork');
     stage.innerHTML =
       '<div class="study-card-shell">' +
-        '<img class="study-card-image" src="cards/week-' + weekPadded + '.png" alt="Percolate Week ' + weekNumber + ' study card">' +
+        '<button class="study-card-zoom" type="button" aria-label="Zoom study card and rotate phone for landscape view">Zoom card</button>' +
+        '<img class="study-card-image" src="' + cardSrc + '" alt="Percolate Week ' + weekNumber + ' study card">' +
       '</div>' +
-      '<p class="study-card-caption">Original Percolate card layout with companion notes below.</p>';
+      '<p class="study-card-caption">Tap artwork to zoom. Rotate your phone for the full card view.</p>';
     progress.insertAdjacentElement('afterend', stage);
   }
+
+  var stageEl = document.querySelector('.study-card-stage');
+  var shell = stageEl ? stageEl.querySelector('.study-card-shell') : null;
+  var image = stageEl ? stageEl.querySelector('.study-card-image') : null;
+  var zoomButton = stageEl ? stageEl.querySelector('.study-card-zoom') : null;
+
+  if (!shell || !image || !zoomButton) return;
+
+  var lightbox = document.querySelector('.study-card-lightbox');
+  if (!lightbox) {
+    lightbox = document.createElement('div');
+    lightbox.className = 'study-card-lightbox';
+    lightbox.setAttribute('aria-hidden', 'true');
+    lightbox.innerHTML =
+      '<div class="study-card-lightbox-dialog" role="dialog" aria-modal="true" aria-label="Zoomed Percolate study card">' +
+        '<button class="study-card-lightbox-close" type="button" aria-label="Close zoomed card">&times;</button>' +
+        '<p class="study-card-lightbox-tip">Rotate your phone for landscape. On supported browsers, full screen starts automatically.</p>' +
+        '<img class="study-card-lightbox-image" alt="Zoomed Percolate study card">' +
+      '</div>';
+    document.body.appendChild(lightbox);
+  }
+
+  var lightboxDialog = lightbox.querySelector('.study-card-lightbox-dialog');
+  var lightboxImage = lightbox.querySelector('.study-card-lightbox-image');
+  var closeButton = lightbox.querySelector('.study-card-lightbox-close');
+
+  function requestLandscapeFullscreen() {
+    var isMobileViewport = window.matchMedia('(max-width: 820px)').matches;
+    if (!isMobileViewport) return;
+
+    var requestFullscreen =
+      lightboxDialog.requestFullscreen ||
+      lightboxDialog.webkitRequestFullscreen ||
+      lightboxDialog.msRequestFullscreen;
+
+    if (!requestFullscreen) return;
+
+    Promise.resolve(requestFullscreen.call(lightboxDialog))
+      .then(function () {
+        if (screen.orientation && screen.orientation.lock) {
+          return screen.orientation.lock('landscape').catch(function () {});
+        }
+      })
+      .catch(function () {});
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('is-active');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('study-card-zoom-open');
+
+    if (document.fullscreenElement && document.exitFullscreen) {
+      document.exitFullscreen().catch(function () {});
+    } else if (document.webkitFullscreenElement && document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    }
+
+    if (screen.orientation && screen.orientation.unlock) {
+      try {
+        screen.orientation.unlock();
+      } catch (error) {}
+    }
+  }
+
+  function openLightbox() {
+    lightboxImage.src = cardSrc;
+    lightboxImage.alt = image.alt;
+    lightbox.classList.add('is-active');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('study-card-zoom-open');
+    requestLandscapeFullscreen();
+    closeButton.focus();
+  }
+
+  shell.addEventListener('click', function (event) {
+    var clickedImage = event.target.closest('.study-card-image');
+    var clickedZoom = event.target.closest('.study-card-zoom');
+    if (!clickedImage && !clickedZoom) return;
+    event.preventDefault();
+    openLightbox();
+  });
+
+  closeButton.addEventListener('click', closeLightbox);
+
+  lightbox.addEventListener('click', function (event) {
+    if (event.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && lightbox.classList.contains('is-active')) {
+      closeLightbox();
+    }
+  });
 })();
