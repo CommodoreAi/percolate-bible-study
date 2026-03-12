@@ -1941,6 +1941,20 @@ ul {
   transform: rotate(2deg);
 }
 
+.ink-smudge {
+  position: absolute;
+  top: 20%;
+  left: -10px;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  background: rgba(27, 20, 17, 0.95);
+  filter: blur(10px);
+  opacity: 0.15;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
 @keyframes posterFloat {
   0%, 100% {
     transform: scale(1.18) translateY(0) rotate(-0.35deg);
