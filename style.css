@@ -1742,9 +1742,11 @@ ul {
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
   .session-page .content-wrap {
     margin: 0;
+    max-width: none;
+    width: 100%;
     border-radius: 0;
     border-left: 0;
     border-right: 0;
@@ -1756,6 +1758,11 @@ ul {
 
   .session-page .top-nav {
     padding-left: 3.25rem;
+  }
+
+  .session-page .page-bg {
+    transform: none;
+    background-position: center top;
   }
 
   .session-page .session-hero {
@@ -2158,6 +2165,8 @@ body.study-card-zoom-open {
 
   .study-card-shell {
     padding: 0.7rem;
+    width: 100%;
+    max-width: none;
   }
 
   .study-card-zoom {
@@ -2199,6 +2208,25 @@ body.study-card-zoom-open {
 
   .study-card-lightbox-image {
     max-height: calc(100vh - 4.4rem);
+  }
+}
+
+@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
+  .session-page.has-study-card .content-wrap {
+    margin: 0;
+    max-width: none;
+    width: 100%;
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+  }
+
+  .study-card-stage {
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 }
 
