@@ -1870,6 +1870,46 @@ ul {
   text-transform: uppercase;
 }
 
+.session-tag {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  margin: 1rem 0 0.5rem 3.8rem;
+  padding: 0.38rem 1rem 0.42rem;
+  background: rgba(210, 105, 30, 0.2);
+  color: rgba(52, 32, 13, 0.9);
+  border-left: 5px solid rgba(210, 105, 30, 0.8);
+  border-right: 5px solid rgba(210, 105, 30, 0.8);
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.12);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transform: rotate(-2deg);
+}
+
+.session-tag::before,
+.session-tag::after {
+  content: "";
+  position: absolute;
+  top: -0.28rem;
+  width: 1.4rem;
+  height: calc(100% + 0.56rem);
+  background: rgba(255, 244, 213, 0.58);
+  border: 1px solid rgba(138, 107, 66, 0.16);
+  pointer-events: none;
+}
+
+.session-tag::before {
+  left: -0.5rem;
+  transform: rotate(-8deg);
+}
+
+.session-tag::after {
+  right: -0.5rem;
+  transform: rotate(7deg);
+}
+
 @keyframes posterFloat {
   0%, 100% {
     transform: scale(1.18) translateY(0) rotate(-0.35deg);
@@ -1889,6 +1929,11 @@ ul {
   box-shadow:
     0 8px 24px rgba(0,0,0,0.08),
     inset 0 1px 0 rgba(255,255,255,0.38);
+}
+
+.session-page.has-study-card .session-tag {
+  margin-left: 5.2rem;
+  margin-bottom: 0.9rem;
 }
 
 .session-page.has-study-card .section-card::before,
@@ -1957,6 +2002,11 @@ ul {
 }
 
 @media (max-width: 720px) {
+  .session-tag,
+  .session-page.has-study-card .session-tag {
+    margin-left: 1rem;
+  }
+
   .study-card-shell {
     padding: 0.7rem;
   }
