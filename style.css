@@ -2252,6 +2252,43 @@ ul {
     0 18px 36px rgba(0,0,0,0.16);
 }
 
+.back-cover {
+  margin: 2.2rem 1.25rem 0;
+  padding: 3.6rem 1.25rem;
+  border-top: 10px solid #d2691e;
+  border-radius: 30px;
+  background: #1b1411;
+  color: #fdf5e6;
+  text-align: center;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.05),
+    0 18px 40px rgba(0,0,0,0.18);
+}
+
+.back-cover h3 {
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+.back-cover-copy {
+  max-width: 28rem;
+  margin: 1rem auto 1.75rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(253, 245, 230, 0.84);
+}
+
+.mfa-meta {
+  display: inline-block;
+  padding: 1rem 1.2rem;
+  border: 1px solid rgba(255,255,255,0.18);
+  color: rgba(253, 245, 230, 0.72);
+  font-size: 0.82rem;
+  line-height: 1.65;
+  letter-spacing: 0.03em;
+}
+
 .notebook-index {
   position: relative;
   max-width: 1220px;
@@ -2372,6 +2409,12 @@ ul {
   .home-page .home-rhythm,
   .home-page .site-footer {
     padding-left: 3rem;
+  }
+
+  .back-cover {
+    margin-left: 0.8rem;
+    margin-right: 0.8rem;
+    padding: 2.8rem 1rem;
   }
 
   .index-item {
